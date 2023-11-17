@@ -1,0 +1,23 @@
+﻿@model List<Response>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static HTML Data</title>
+</head>
+<body>
+    <h1>Data from Public API</h1>
+
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li>
+                <h3>@post.Title</h3>
+                <p>@post.Body</p>
+            </li>
+        }
+    </ul>
+</body>
+</html>

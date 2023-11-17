@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public API Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="data-container">
+        <h2>Books</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Chapters</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+    $.ajax({
+        url: 'https://www.abibliadigital.com.br/api/books',
+        method: 'GET',
+        success: function (data) {
+            var html = '';
+            $.each(data, function (key, p) {
+                html += '<tr>';
+                html += '<td>' + p.name + '</td>';
+                html += '<td>' + p.author + '</td>';
+                html += '<td>' + p.chapters + '</td>';
+                html += '</tr>';
+            });
+
+            $('#data-container #data').html(html);
+        },
+        error: function (error) {
+            console.error('Error fetching data from API:', error);
+        }
+    });
+});
+    </script>
+</body>
+</html>
